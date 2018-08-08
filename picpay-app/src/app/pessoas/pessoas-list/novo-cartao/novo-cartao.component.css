@@ -1,0 +1,146 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.dialog {
+ z-index: 1000;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 40%;
+  min-width: 320px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 768px) {
+  .dialog {
+    top: 40px;
+  }
+}
+
+.dialog__close-btn {
+  border: 0;
+  background: none;
+  color: #ffffff;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 1.2em;
+}
+
+.rectangle-top {
+  width: 100%;
+  height: 25.5px ;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #474971;
+  display: flex;
+  padding: 7px 12px;
+  position: relative;
+  }
+
+.info-top{
+  display: flex;
+  font-family: Roboto;
+  font-size: 8px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  padding: 1px 0px;
+}
+
+.info-top-description{}
+
+.x-button {
+  display: flex;
+  height: 7px;
+  padding: 2px 0px;
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+
+}
+.x-img {
+   width: 7px;
+  height: 7px;
+}
+
+.Pagamento-para-Nome .text-style-1 {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.Pagamento-para-Nome {
+  width: 124px;
+  height: 9.5px;
+  font-family: Roboto;
+  font-size: 8px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #7de6c6;
+  position: relative;
+  vertical-align: middle;
+}
+.input-box { position: relative; }
+
+input { display: block;
+  border: 1px solid #d7d6d6;
+  background: #fff;
+  padding: 10px 10px 10px 20px;
+  width: 195px;
+}
+
+.unit { position: absolute; display: block; left: 0px; top: 10px; z-index: 9; }
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.rectangle-container {
+  padding: 10px 16px;
+}
+
+.input-div{
+
+}
+
+.input-div-center{
+
+}
+
+.description{
+  height: 8px;
+  font-family: NunitoSans;
+  font-size: 6px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #474971;
+}
+@media (min-width: 668px) and (max-width: 669px) {
+  .dialog {
+    top: 20px;
+  }
+}
