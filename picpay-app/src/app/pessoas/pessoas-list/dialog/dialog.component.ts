@@ -95,24 +95,26 @@ export class DialogComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    const date = new Date();
-    const transaction = '88888888';
-    this.dialogBoxService.sendDataPayment(
-      transaction,
-      date,
-      this.selectedCard.end_numbers,
-      this.pagamentoForm.get('value').value);
     console.log(this.pagamentoForm.value);
-    this.dataServer.sendPayment(this.pagamentoForm)
-      .subscribe(
+    this.dataServer.sendPayment(this.pagamentoForm).subscribe(
         (response) => {
           console.log(response);
-          console.log(response['transaction']['status']);
+          if (response['transaction']['status'] === 'Aprovada') {
+            const date = new Date();
+            const transaction = response['transaction']['id'];
+            this.dialogBoxService.sendDataPayment(
+                    transaction,
+                    date,
+                    this.selectedCard.end_numbers,
+                    this.pagamentoForm.get('value').value);
+            this.dialogBoxService.onClickoutbox();
+            this.dialogBoxService.showFinishPayment.next(true);
+            this.pagamentoForm.get('value').reset();
+          } else {
+            console.log('não aprovada!');
+          }
         }
       );
-    this.dialogBoxService.onClickoutbox();
-    this.dialogBoxService.showFinishPayment.next(true);
-    this.pagamentoForm.get('value').reset();
   }
 
   close() {
@@ -137,12 +139,8 @@ export class DialogComponent implements OnInit, OnDestroy {
    console.log( this.creditCards.length);
   }
 
-  // apagar
+  // apag
   comeBack2() {
-    this.dialogBoxService.onClickoutbox();
-    this.dialogBoxService.showCardsList.next(true);
-  }
-  comeBack3() {
     this.dialogBoxService.onClickoutbox();
     this.dialogBoxService.showFinishPayment.next(true);
   }

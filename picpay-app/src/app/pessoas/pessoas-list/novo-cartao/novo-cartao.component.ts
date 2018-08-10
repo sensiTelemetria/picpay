@@ -75,4 +75,8 @@ export class NovoCartaoComponent implements OnInit, OnDestroy {
     this.subs.unsubscribe();
   }
 
+  onSelect() {
+    console.log('selecionado');
+  }
+
 }

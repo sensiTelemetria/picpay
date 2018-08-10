@@ -13,7 +13,7 @@
   position: fixed;
   right: 0;
   left: 0;
-  top: 20px;
+  top: 60px;
   margin-right: auto;
   margin-left: auto;
   width: 40%;
@@ -23,11 +23,6 @@
   box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);
 }
 
-@media (min-width: 768px) {
-  .dialog {
-    top: 40px;
-  }
-}
 
 .dialog__close-btn {
   border: 0;
@@ -100,16 +95,6 @@
   position: relative;
   vertical-align: middle;
 }
-.input-box { position: relative; }
-
-input { display: block;
-  border: 1px solid #d7d6d6;
-  background: #fff;
-  padding: 10px 10px 10px 20px;
-  width: 195px;
-}
-
-.unit { position: absolute; display: block; left: 0px; top: 10px; z-index: 9; }
 
 input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
   border: 1px solid red;
@@ -120,15 +105,14 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
 }
 
 .input-div{
-
-}
+  width: 100%;}
 
 .input-div-center{
-
+   width: 100%;
+  padding: 0;
 }
 
 .description{
-  height: 8px;
   font-family: NunitoSans;
   font-size: 6px;
   font-weight: bold;
@@ -137,6 +121,69 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
+  color: #474971;
+  cursor: default;
+}
+
+input {
+  width: 100%;
+  height: 11px;
+  border: none;
+  margin-bottom: 2px;
+  font-family: NunitoSans;
+  font-size: 8px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: black;
+
+}
+
+::placeholder { /* Most modern browsers support this now. */
+   color:    #acb1bd;
+}
+
+
+.line {
+  width: 100%;
+  height: 1px;
+  border: solid 0.5px;
+  border-color: #dae1f0;
+  margin-bottom: 10px;
+}
+
+.button{
+   display: flex;
+  justify-content: center;
+}
+
+
+.button-center{
+  min-width: 266px;
+  width: 60%;
+  height: 24px;
+  border-radius: 12px;
+  background-image: linear-gradient(to bottom, #b4f4e5, #7de6c6);
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+
+}
+
+.text{
+  font-family: Roboto;
+  font-size: 7px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
   color: #474971;
 }
 @media (min-width: 668px) and (max-width: 669px) {

@@ -14,7 +14,7 @@
   position: fixed;
   right: 0;
   left: 0;
-  top: 20px;
+  top: 60px;
   margin-right: auto;
   margin-left: auto;
   width: 40%;
@@ -590,7 +590,7 @@ input {
   justify-content: center;
   cursor: pointer;
   position: absolute;
-  bottom: 79.5px;
+  bottom: 50px;
   width: 100%
 }
 
@@ -645,11 +645,13 @@ input {
   min-width: 0;
   height: 48px;
   padding: 0 8px;
+
 }
 
 
 .button-center{
   width: 100%;
+  min-width: 0;
   height: 24px;
   border-radius: 12px;
   margin: auto 0px;

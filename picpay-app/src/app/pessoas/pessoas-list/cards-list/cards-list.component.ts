@@ -16,7 +16,11 @@ export class CardsListComponent implements OnInit, OnDestroy {
   subsIndex: Subscription;
   creditCards: CreditCard[];
   selectedCardIndex: number;
-  constructor(private dialogBoxService: DialogBoxService) { }
+  constructor(private dialogBoxService: DialogBoxService) {
+   this.creditCards = [new CreditCard('master', 'talles', '123456789123456', '1123', '11/1994', 123, 29146050),
+   new CreditCard('master', 'talles', '123456789123456', '1123', '11/1994', 123, 29146050),
+   ];
+  }
 
   ngOnInit() {
     this.subsIndex = this.dialogBoxService.cardIndex.subscribe(

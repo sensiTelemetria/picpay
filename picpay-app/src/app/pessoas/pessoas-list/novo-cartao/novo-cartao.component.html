@@ -15,30 +15,58 @@
 
       <div class="input-div">
         <div class="input-div-center">
-          <div class="description">Selecione a bandeira</div>
+          <label [ngStyle]="{'color': novoCartaoForm.get('bandeira').value !== '' ? '#474971': '#ffffff'}" class="description"  for="bandeira">Selecione a bandeira</label>
           <input formControlName="bandeira" id="bandeira" placeholder="Selecione a bandeira" >
+          <div [ngStyle]="{'border-color': novoCartaoForm.get('bandeira').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
         </div>
       </div>
-      <div>
 
-        <input formControlName="nomeEscritoCartao" id="nomeEscritoCartao" placeholder="nome Escrito no Cartao" >
-      </div>
-      <div>
-        <input formControlName="numeroCartao" id="numeroCartao" placeholder="numero do Cartao" >
-      </div>
-      <div>
-        <input formControlName="validade" id="validade" placeholder="validade" >
-      </div>
-      <div>
-        <input formControlName="codigoSeguranca" id="codigoSeguranca" placeholder="codigoSeguranca" >
-      </div>
-      <div>
-        <input formControlName="CEP" id="CEP" placeholder="CEP" >
+      <div class="input-div">
+        <div class="input-div-center">
+          <label [ngStyle]="{'color': novoCartaoForm.get('nomeEscritoCartao').value !== '' ? '#474971': '#ffffff'}" class="description"  for="nomeEscritoCartao">Nome Escrito no Cartão</label>
+          <input formControlName="nomeEscritoCartao" id="nomeEscritoCartao" placeholder="Nome Escrito no Cartão" >
+          <div [ngStyle]="{'border-color': novoCartaoForm.get('nomeEscritoCartao').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
+        </div>
       </div>
 
-      <div>
-        <button type="submit" [disabled]="!novoCartaoForm.valid">Cadastrar</button>
+
+
+      <div class="input-div"> <div class="input-div">
+        <div class="input-div-center">
+          <label [ngStyle]="{'color': novoCartaoForm.get('numeroCartao').value !== '' ? '#474971': '#ffffff'}" class="description"  for="numeroCartao">Número do Cartão</label>
+          <input formControlName="numeroCartao" id="numeroCartao" placeholder="Número do Cartão" >
+          <div [ngStyle]="{'border-color': novoCartaoForm.get('numeroCartao').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
+        </div>
       </div>
+        <div class="input-div-center">
+          <label [ngStyle]="{'color': novoCartaoForm.get('validade').value !== '' ? '#474971': '#ffffff'}" class="description"  for="validade">Numero do Cartão</label>
+          <input formControlName="validade" id="validade" placeholder="Validade (mm/aaaa)" >
+          <div [ngStyle]="{'border-color': novoCartaoForm.get('validade').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
+        </div>
+      </div>
+
+      <div class="input-div">
+        <div class="input-div-center">
+          <label [ngStyle]="{'color': novoCartaoForm.get('codigoSeguranca').value !== '' ? '#474971': '#ffffff'}" class="description"  for="codigoSeguranca">Código de Seguranca</label>
+          <input formControlName="codigoSeguranca" id="codigoSeguranca" placeholder="Código de Seguranca" >
+          <div [ngStyle]="{'border-color': novoCartaoForm.get('codigoSeguranca').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
+        </div>
+      </div>
+
+      <div class="input-div">
+        <div class="input-div-center">
+          <label [ngStyle]="{'color': novoCartaoForm.get('CEP').value !== '' ? '#474971': '#ffffff'}" class="description"  for="CEP">CEP do endereço de fatura</label>
+          <input formControlName="CEP" id="CEP" placeholder="do endereço de fatura" >
+          <div [ngStyle]="{'border-color': novoCartaoForm.get('CEP').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
+        </div>
+      </div>
+
+      <div class="button">
+        <button class="button-center" [disabled]="!novoCartaoForm.valid">
+          <span class="text">CADASTRAR</span>
+        </button>
+      </div>
+
     </form>
   </div>
 </div>
