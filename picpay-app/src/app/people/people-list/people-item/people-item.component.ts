@@ -2,13 +2,14 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Pessoas} from '../../pessoas.model';
 import {DialogBoxService} from '../dialog-box.service';
 
+
 @Component({
-  selector: 'app-pessoas-item',
-  templateUrl: './pessoas-item.component.html',
-  styleUrls: ['./pessoas-item.component.css']
+  selector: 'app-people-item',
+  templateUrl: './people-item.component.html',
+  styleUrls: ['./people-item.component.css']
 })
-export class PessoasItemComponent implements OnInit {
-  @Input() pessoa: Pessoas;
+export class PeopleItemComponent implements OnInit {
+  @Input() person: Pessoas;
   @Input() index: number;
   constructor(private dialogBoxService: DialogBoxService) { }
 
@@ -17,6 +18,6 @@ export class PessoasItemComponent implements OnInit {
 
   onClick() {
     this.dialogBoxService.showDialog.next(true);
-    this.dialogBoxService.onSelecPessoa(this.pessoa);
+    this.dialogBoxService.onSelecPessoa(this.person);
   }
 }

@@ -27,6 +27,7 @@ export class FinishPaymentComponent implements OnInit, OnDestroy {
 
   constructor(private dialogBoxService: DialogBoxService) {
   this.dataPayment = null;
+  this.creditCards = this.dialogBoxService.getCards();
   }
 
 

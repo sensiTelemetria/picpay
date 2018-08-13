@@ -11,19 +11,19 @@
   </div>
 
  <div class="rectangle-container">
-    <form [formGroup]="novoCartaoForm" (ngSubmit)="onSubmit()" >
+    <form [formGroup]="novoCartaoForm" (ngSubmit)="onSubmit()" autocomplete="off" >
 
       <div class="input-div">
         <div class="input-div-center">
-          <label [ngStyle]="{'color': novoCartaoForm.get('bandeira').value !== '' ? '#474971': '#ffffff'}" class="description"  for="bandeira">Selecione a bandeira</label>
-          <input formControlName="bandeira" id="bandeira" placeholder="Selecione a bandeira" >
+          <label *ngIf="novoCartaoForm.get('bandeira').value !== ''" class="description"  for="bandeira">Selecione a bandeira</label>
+          <input  formControlName="bandeira" id="bandeira" placeholder="Selecione a bandeira" >
           <div [ngStyle]="{'border-color': novoCartaoForm.get('bandeira').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
         </div>
       </div>
 
       <div class="input-div">
         <div class="input-div-center">
-          <label [ngStyle]="{'color': novoCartaoForm.get('nomeEscritoCartao').value !== '' ? '#474971': '#ffffff'}" class="description"  for="nomeEscritoCartao">Nome Escrito no Cartão</label>
+          <label *ngIf="novoCartaoForm.get('nomeEscritoCartao').value !== ''" class="description"  for="nomeEscritoCartao">Nome Escrito no Cartão</label>
           <input formControlName="nomeEscritoCartao" id="nomeEscritoCartao" placeholder="Nome Escrito no Cartão" >
           <div [ngStyle]="{'border-color': novoCartaoForm.get('nomeEscritoCartao').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
         </div>
@@ -33,13 +33,13 @@
 
       <div class="input-div"> <div class="input-div">
         <div class="input-div-center">
-          <label [ngStyle]="{'color': novoCartaoForm.get('numeroCartao').value !== '' ? '#474971': '#ffffff'}" class="description"  for="numeroCartao">Número do Cartão</label>
+          <label *ngIf="novoCartaoForm.get('numeroCartao').value !== ''" class="description"  for="numeroCartao">Número do Cartão</label>
           <input formControlName="numeroCartao" id="numeroCartao" placeholder="Número do Cartão" >
           <div [ngStyle]="{'border-color': novoCartaoForm.get('numeroCartao').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
         </div>
       </div>
         <div class="input-div-center">
-          <label [ngStyle]="{'color': novoCartaoForm.get('validade').value !== '' ? '#474971': '#ffffff'}" class="description"  for="validade">Numero do Cartão</label>
+          <label *ngIf="novoCartaoForm.get('validade').value !== ''" class="description"  for="validade">Validade (mm/aaaa)</label>
           <input formControlName="validade" id="validade" placeholder="Validade (mm/aaaa)" >
           <div [ngStyle]="{'border-color': novoCartaoForm.get('validade').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
         </div>
@@ -47,7 +47,7 @@
 
       <div class="input-div">
         <div class="input-div-center">
-          <label [ngStyle]="{'color': novoCartaoForm.get('codigoSeguranca').value !== '' ? '#474971': '#ffffff'}" class="description"  for="codigoSeguranca">Código de Seguranca</label>
+          <label *ngIf="novoCartaoForm.get('codigoSeguranca').value !== ''" class="description"  for="codigoSeguranca">Código de Seguranca</label>
           <input formControlName="codigoSeguranca" id="codigoSeguranca" placeholder="Código de Seguranca" >
           <div [ngStyle]="{'border-color': novoCartaoForm.get('codigoSeguranca').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
         </div>
@@ -55,8 +55,8 @@
 
       <div class="input-div">
         <div class="input-div-center">
-          <label [ngStyle]="{'color': novoCartaoForm.get('CEP').value !== '' ? '#474971': '#ffffff'}" class="description"  for="CEP">CEP do endereço de fatura</label>
-          <input formControlName="CEP" id="CEP" placeholder="do endereço de fatura" >
+          <label *ngIf="novoCartaoForm.get('CEP').value !== ''" class="description" class="description"  for="CEP">CEP do endereço de fatura</label>
+          <input formControlName="CEP" id="CEP" placeholder="CEP do endereço de fatura" >
           <div [ngStyle]="{'border-color': novoCartaoForm.get('CEP').value !== '' ? '#474971': '#dae1f0'}" class="line"></div>
         </div>
       </div>

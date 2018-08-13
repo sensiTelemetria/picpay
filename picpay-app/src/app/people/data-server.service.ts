@@ -10,10 +10,6 @@ import {FormGroup} from '@angular/forms';
 export class DataService {
 
   constructor(private httpClient: HttpClient) { }
-    pessoas: Pessoas[] = [
-    new Pessoas(1001, 'talles', ' path to imagem', '@talles'),
-    new Pessoas(1002, 'naty', ' path to imagem 2', '@naty')
-    ];
 
   getPessoas() {
     return this.httpClient.get<Pessoas[]>('http://careers.picpay.com/tests/mobdev/users');

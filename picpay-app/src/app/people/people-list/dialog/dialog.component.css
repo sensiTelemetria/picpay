@@ -83,7 +83,8 @@
 }
 
 input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
-  border: 1px solid red;
+  border-bottom: 1px solid red;
+  color: red;
 }
 
 .info-container{
@@ -452,8 +453,9 @@ input {
   height: 7px;
 }
 
-input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
-  border: 1px solid red;
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched{
+  border-bottom: 1px solid red;
+  color: red;
 }
 
 .info-container{

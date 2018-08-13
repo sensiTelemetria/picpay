@@ -32,7 +32,7 @@
     <form [formGroup]="pagamentoForm" (ngSubmit) = 'onSubmit()'>
 
       <div class="input-container">
-          <input matInput formControlName="value" placeholder="R$ 0,00">
+          <input matInput formControlName="value" placeholder="R$ 0.00">
       </div>
 
       <div class="line-input">
@@ -41,7 +41,13 @@
 
       <div  class=" text-form-invalid" *ngIf="!pagamentoForm.get('value').valid && pagamentoForm.get('value').touched" >
         <div class=" text-form-invalid-center">
-          O valor não está no formato correto! Ex: 10,55
+          O valor não está no formato correto! Ex: 10.50
+        </div>
+      </div>
+
+      <div  class=" text-form-invalid" *ngIf="!paymentConfirmed" >
+        <div class=" text-form-invalid-center">
+          Transação não aprovada!
         </div>
       </div>
       <div class="divisory-line">
@@ -79,7 +85,6 @@
           <span class="payment-text">PAGAR</span>
         </button>
       </div>
-
     </form>
   </div>
 

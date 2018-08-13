@@ -8,6 +8,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CreditCard} from '../../credit-card/credit-card.model';
 import {DataStorageService} from '../../../../../Repositorio/src/app/shared/data-storage.service';
 import {DataService} from '../../data-server.service';
+import {WebStorageService} from 'angular-webstorage-service';
+import {LocalStorage} from '@ngx-pwa/local-storage';
 // https://stackblitz.com/edit/angular-ksz4ml?file=src%2Fapp%2Fapp.component.html
 // https://regexr.com/3g7p4
 
@@ -40,10 +42,17 @@ export class DialogComponent implements OnInit, OnDestroy {
   creditCards: CreditCard[];
   selectedCard: CreditCard;
   selectedCardIndex: number;
+  paymentConfirmed = true;
 
-  constructor(private dialogBoxService: DialogBoxService, private dataServer: DataService) {
-    this.creditCards = [];
-    this.selectedCard = null;
+  constructor(private dialogBoxService: DialogBoxService,
+              private dataServer: DataService,
+              ) {
+    this.creditCards = this.dialogBoxService.getCards();
+    if  (localStorage.length > 0) {
+      this.selectedCard = this.dialogBoxService.getCard(localStorage.length - 1);
+    } else {
+      this.selectedCard = null;
+    }
   }
 
   ngOnInit() {
@@ -66,6 +75,7 @@ export class DialogComponent implements OnInit, OnDestroy {
       this.creditCards = creditCards;
      }
    );
+
   }
 
   initform() {
@@ -90,6 +100,7 @@ export class DialogComponent implements OnInit, OnDestroy {
      'value' : new FormControl(value, [Validators.required, Validators.pattern(/([0-9])+[.]([0-9]){2}/)]),
      'cvv' : new FormControl(cvv, Validators.required),
      'expiry_date' : new FormControl(expiry_date, Validators.required),
+
      'destination_user_id' : new FormControl(destination_user_id, Validators.required)
   });
   }
@@ -111,7 +122,7 @@ export class DialogComponent implements OnInit, OnDestroy {
             this.dialogBoxService.showFinishPayment.next(true);
             this.pagamentoForm.get('value').reset();
           } else {
-            console.log('não aprovada!');
+            this.paymentConfirmed = false;
           }
         }
       );
@@ -119,12 +130,13 @@ export class DialogComponent implements OnInit, OnDestroy {
 
   close() {
     this.visible = false;
-
     this.dialogBoxService.onClickoutbox();
+    this.paymentConfirmed = true;
   }
   addNewCard() {
     this.dialogBoxService.onClickoutbox();
     this.dialogBoxService.showNovoCartao.next(true);
+    this.paymentConfirmed = true;
   }
 
   ngOnDestroy() {
@@ -132,21 +144,10 @@ export class DialogComponent implements OnInit, OnDestroy {
     this.subsIndex.unsubscribe();
     this.subsCreditCards.unsubscribe();
   }
-
-  // apagar
-  comeBack() {
-   console.log( this.creditCards);
-   console.log( this.creditCards.length);
-  }
-
-  // apag
-  comeBack2() {
-    this.dialogBoxService.onClickoutbox();
-    this.dialogBoxService.showFinishPayment.next(true);
-  }
   onChangeCard() {
     this.dialogBoxService.onClickoutbox();
     this.dialogBoxService.showCardsList.next(true);
+    this.paymentConfirmed = true;
   }
 
 }

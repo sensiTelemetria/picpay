@@ -17,9 +17,10 @@ export class CardsListComponent implements OnInit, OnDestroy {
   creditCards: CreditCard[];
   selectedCardIndex: number;
   constructor(private dialogBoxService: DialogBoxService) {
-   this.creditCards = [new CreditCard('master', 'talles', '123456789123456', '1123', '11/1994', 123, 29146050),
-   new CreditCard('master', 'talles', '123456789123456', '1123', '11/1994', 123, 29146050),
-   ];
+    this.creditCards = this.dialogBoxService.getCards();
+    if  (localStorage.length > 0) {
+      this.selectedCardIndex = localStorage.length - 1;
+    }
   }
 
   ngOnInit() {
@@ -43,6 +44,7 @@ export class CardsListComponent implements OnInit, OnDestroy {
     this.dialogBoxService.showNovoCartao.next(true);
   }
   onClickCard(index: number) {
+
     this.dialogBoxService.cardIndex.next(index);
   }
   onSelecCard() {

@@ -1,4 +1,4 @@
-.desktop_lista_usuarios {
+.desktop-user-list {
 
 }
 .navbar {
@@ -14,7 +14,7 @@
 
 }
 
-.image-picpay {
+.img-picpay {
   min-width: 527px;
   width: 70%;
   height: 16px;
@@ -39,7 +39,7 @@ img {
 }
 
 @media (min-width: 200px) and (max-width: 700px) {
-  .desktop_lista_usuarios {
+  .desktop-user-list {
   }
 
   .navbar {

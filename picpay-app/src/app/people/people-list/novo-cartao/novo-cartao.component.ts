@@ -36,14 +36,18 @@ export class NovoCartaoComponent implements OnInit, OnDestroy {
     const codigoSeguranca = '';
     const CEP = '';
     this.novoCartaoForm = new FormGroup({
-      'bandeira': new FormControl(bandeira, Validators.required),
-      'nomeEscritoCartao': new FormControl(nomeEscritoCartao, Validators.required),
+      'bandeira': new FormControl(bandeira, [Validators.required,
+        Validators.pattern(/^[A-Za-z0-9 ]*$/)]),
+      'nomeEscritoCartao': new FormControl(nomeEscritoCartao, [Validators.required,
+      Validators.pattern(/^[A-Za-z0-9 ]*$/)]),
       'validade': new FormControl(validade, [Validators.required,
-        Validators.pattern(/[0-1][0-9][/][0-9][0-9]/)]),
+        Validators.pattern(/^(0[1-9]{1}|1[0-2]{1})\/\d{4}$/)]),
       'codigoSeguranca': new FormControl(codigoSeguranca, [Validators.required,
-      Validators.pattern(/[0-9]/)]),
-      'numeroCartao': new FormControl(numeroCartao, Validators.required),
-      'CEP': new FormControl(CEP, Validators.required),
+      Validators.pattern(/^([0-9]){3}$/)]),
+      'numeroCartao': new FormControl(numeroCartao, [Validators.required,
+      Validators.pattern(/^[0-9]{16}$/)]),
+      'CEP': new FormControl(CEP, [Validators.required,
+        Validators.pattern(/^[0-9]{8}$/)]),
     }
     );
   }

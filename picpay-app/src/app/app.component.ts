@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Pessoas} from './pessoas/pessoas.model';
+import {Pessoas} from './people/pessoas.model';
 
 @Component({
   selector: 'app-root',

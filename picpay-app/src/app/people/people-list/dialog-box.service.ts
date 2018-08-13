@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {Pessoas} from '../pessoas.model';
 import {CreditCard} from '../credit-card/credit-card.model';
@@ -7,7 +7,7 @@ import {DataPaymentModel} from '../data-payment/data-payment.model';
 @Injectable({
   providedIn: 'root'
 })
-export class DialogBoxService {
+export class DialogBoxService implements OnInit{
 
   showDialog = new Subject<boolean>();
   showNovoCartao = new Subject<boolean>();
@@ -21,9 +21,19 @@ export class DialogBoxService {
 
 
   constructor() {
-    this.creditCards = [];
-  }
 
+    const tempCreditCard: CreditCard[] = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      const value = JSON.parse(localStorage.getItem(key));
+      tempCreditCard.push(value);
+    }
+    this.creditCards = tempCreditCard;
+  }
+  ngOnInit() {
+    this.changedCreditCards.next(this.creditCards.slice());
+    this.cardIndex.next(this.creditCards.length - 1);
+  }
   onClickoutbox() {
     this.showDialog.next(false);
     this.showNovoCartao.next(false);
@@ -35,6 +45,7 @@ export class DialogBoxService {
   }
   addNewCard(card: CreditCard) {
     this.creditCards.push(card);
+    localStorage.setItem(localStorage.length.toString(), JSON.stringify(card));
     this.changedCreditCards.next(this.creditCards.slice());
     this.cardIndex.next(this.creditCards.length - 1);
   }
@@ -44,5 +55,8 @@ export class DialogBoxService {
   }
   getCard(index: number) {
     return this.creditCards[index];
+  }
+  getCards() {
+    return this.creditCards.slice();
   }
 }

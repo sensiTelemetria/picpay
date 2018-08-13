@@ -4,30 +4,24 @@ import {DataService} from '../data-server.service';
 import {Subscription} from 'rxjs';
 import {DialogBoxService} from './dialog-box.service';
 
-
 @Component({
-  selector: 'app-pessoas-list',
-  templateUrl: './pessoas-list.component.html',
-  styleUrls: ['./pessoas-list.component.css']
+  selector: 'app-people-list',
+  templateUrl: './people-list.component.html',
+  styleUrls: ['./people-list.component.css']
 })
-export class PessoasListComponent implements OnInit, OnDestroy {
+export class PeopleListComponent implements OnInit, OnDestroy {
 
   constructor(private dataServer: DataService,
               private dialogBoxService: DialogBoxService) { }
-  pessoas: Pessoas[];
+  people: Pessoas[];
   subsDialog: Subscription;
-  subsNovoCartao: Subscription;
+  subsNewCard: Subscription;
   subsCardsList: Subscription;
   subsFinishPayment: Subscription;
   showDialog: boolean;
   showNovoCartao: boolean;
   showCardsList: boolean;
   showFinishPayment: boolean;
-
-  onClick() {
-    this.showDialog = !this.showDialog;
-    console.log(this.showDialog);
-  }
   ngOnInit() {
 
     this.subsDialog = this.dialogBoxService.showDialog.subscribe(
@@ -35,7 +29,7 @@ export class PessoasListComponent implements OnInit, OnDestroy {
         this.showDialog = bool;
       }
     );
-      this.subsNovoCartao = this.dialogBoxService.showNovoCartao.subscribe(
+      this.subsNewCard = this.dialogBoxService.showNovoCartao.subscribe(
       (bool: boolean) => {
         this.showNovoCartao = bool;
       }
@@ -51,14 +45,14 @@ export class PessoasListComponent implements OnInit, OnDestroy {
       }
     );
     this.dataServer.getPessoas().subscribe(
-      (pessoas) => {
-        this.pessoas = pessoas;
+      (people) => {
+        this.people = people;
       }
     );
   }
   ngOnDestroy() {
     this.subsDialog.unsubscribe();
-    this.subsNovoCartao.unsubscribe();
+    this.subsNewCard.unsubscribe();
     this.subsCardsList.unsubscribe();
     this.subsFinishPayment.unsubscribe();
   }
